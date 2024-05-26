@@ -273,7 +273,7 @@
 
         
         if(data.ph != null){
-            myCustomColourPH = parseInt(data.ph) < 5 ? '#EB3939' : (parseInt(data.ph) > 6,5 ? '#EBFF02' : '#76AF00');
+            myCustomColourPH = parseInt(data.ph) < 4.5 ? '#EB3939' : (parseInt(data.ph) > 6,5 ? '#EBFF02' : '#76AF00');
         }
 
         $('#bg-humidity').css('background-color', myCustomColourHumidity);

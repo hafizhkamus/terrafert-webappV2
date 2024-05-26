@@ -43,7 +43,7 @@
                         <input class="form-control form-control-lg custom-box-shadow" type="password" name="inputPassword" placeholder="Kata Sandi" />
                     </div>
                     <div class="text-center mt-3">
-                        <button type="submit" class="btn btn-lg btn-main">Sign in</button>
+                        <button type="submit" class="btn btn-lg btn-main">Masuk</button>
                     </div>
                 </form>
             </div>

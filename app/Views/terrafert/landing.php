@@ -124,7 +124,7 @@
                                     <div class="text-center me-1">
                                         <div>
                                             <h5>
-                                                <strong id="ph">4.5</strong> 
+                                                <strong id="ph">3.5</strong> 
                                             </h5>
                                         </div>
                                         <div>
