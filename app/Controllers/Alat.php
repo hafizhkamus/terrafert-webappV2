@@ -13,8 +13,7 @@ class Alat extends BaseController
 	{
 		$data = array_merge($this->data, [
 			'title' 	=> 'Users Page',
-			'Alat'		=> $this->alatModel->getAlat(),
-			'UserRole'	=> $this->userModel->getUserRole()
+			'Alat'		=> $this->alatModel->getAlat()
 		]);
 		return view('terrafert/alat', $data);
 	}

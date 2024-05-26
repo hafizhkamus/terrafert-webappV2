@@ -30,7 +30,6 @@ class Map extends BaseController
 		$data = array_merge($this->data, [
 			'title' 	=> 'Users Page',
 			'Alat'		=> $this->alatModel->getDevices(),
-			'UserRole'	=> $this->userModel->getUserRole(),
             'Month'     => $month
 		]);
 		return view('terrafert/map', $data);

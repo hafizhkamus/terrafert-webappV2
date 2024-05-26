@@ -40,7 +40,7 @@
                 <img src="<?= base_url('assets/img/pin.png') ?>" style="width: 40px;">
                 <div>
                     <div>
-                        <strong>Lokasi Awal:</strong> <label for="" id="location">Dummy Data</label>
+                        <strong>Lokasi:</strong> <label for="" id="location">Desa Curug Rendeng, Subang</label>
                     </div>
                     <div>
                         <strong>Koordinat Saat ini:</strong> <label for="" id="longlat">Dummy Data</label>
@@ -239,7 +239,7 @@
         $('#namaAlat').html(data.device_name);
         $('#longlat').html(data.longitude + ', ' + data.latitude);
         $('#humidity').html(data.humidity ? data.humidity + '%' : 0);
-        $('#ph').html(data.ph ? data.ph + '%' : 0);
+        $('#ph').html(data.ph ? data.ph : 0);
         $('#natrium').html(data.N ? data.N + ' ppm' : 0);
         $('#phosphorus').html(data.P ? data.P + ' ppm' : 0);
         $('#potassium').html(data.K ? data.K + ' ppm' : 0);
@@ -247,26 +247,40 @@
         $('#details').css('display', '');
 
         var jumlah = 0;
-        var myCustomColour = '#6c757d';
+        var myCustomColourN = '#6c757d';
+        var myCustomColourP = '#6c757d';
+        var myCustomColourK = '#6c757d';
+        var myCustomColourPH = '#6c757d';
+        var myCustomColourHumidity = '#6c757d';
         if(data.N != null){
-            var Npoint = parseInt(data.N) < 210 ? 0 : (parseInt(data.N) > 500 ? 1 : 2);
-            var Ppoint = parseInt(data.P) < 8 ? 0 : (parseInt(data.P) > 10 ? 1 : 2);
-            var Kpoint = parseInt(data.K) < 210 ? 0 : (parseInt(data.K) > 400 ? 1 : 2);
-            
-            if((Npoint == 2 && Ppoint == 2) || (Kpoint == 2 && Ppoint == 2) || (Kpoint == 2 && Npoint == 2)){
-                myCustomColour = '#76AF00';
-            } else if ((Npoint == 1 && Ppoint == 1) || (Kpoint == 1 && Ppoint == 1) || (Kpoint == 1 && Npoint == 1)){
-                myCustomColour = '#EBFF02';
-            } else {
-                myCustomColour = '#EB3939';
-            }
+            myCustomColourN = parseInt(data.N) < 210 ? '#EB3939' : (parseInt(data.N) > 500 ? '#EBFF02' : '#76AF00');
+        }
+        
+        
+        if(data.P != null){
+            myCustomColourP = parseInt(data.P) < 8 ? '#EB3939' : (parseInt(data.P) > 10 ? '#EBFF02' : '#76AF00');
         }
 
-        $('#bg-humidity').css('background-color', myCustomColour);
-        $('#bg-ph').css('background-color', myCustomColour);
-        $('#bg-natrium').css('background-color', myCustomColour);
-        $('#bg-phosphorus').css('background-color', myCustomColour);
-        $('#bg-potassium').css('background-color', myCustomColour);
+        
+        if(data.K != null){
+            myCustomColourK = parseInt(data.K) < 210 ? '#EB3939' : (parseInt(data.K) > 400 ? '#EBFF02' : '#76AF00');
+        }
+
+        
+        if(data.humidity != null){
+            myCustomColourHumidity = parseInt(data.humidity) < 40 ? '#EB3939' : (parseInt(data.humidity) > 60 ? '#EBFF02' : '#76AF00');
+        }
+
+        
+        if(data.ph != null){
+            myCustomColourPH = parseInt(data.ph) < 5 ? '#EB3939' : (parseInt(data.ph) > 6,5 ? '#EBFF02' : '#76AF00');
+        }
+
+        $('#bg-humidity').css('background-color', myCustomColourHumidity);
+        $('#bg-ph').css('background-color', myCustomColourPH);
+        $('#bg-natrium').css('background-color', myCustomColourN);
+        $('#bg-phosphorus').css('background-color', myCustomColourP);
+        $('#bg-potassium').css('background-color', myCustomColourK);
 
         
         map.setView({ lat : data.latitude, lon : data.longitude }, 22);

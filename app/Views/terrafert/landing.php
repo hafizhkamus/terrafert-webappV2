@@ -96,7 +96,7 @@
                             <img src="<?= base_url('assets/img/pin.png') ?>" style="width: 40px;">
                             <div>
                                 <div>
-                                    <strong>Lokasi Awal:</strong> <label for="" id="location">Desa Curug Rendeng, Subang</label>
+                                    <strong>Lokasi:</strong> <label for="" id="location">Desa Curug Rendeng, Subang</label>
                                 </div>
                                 <div>
                                     <strong>Koordinat Saat ini:</strong> <label for="" id="longlat">-6.6908840, 107.6722790</label>
@@ -142,7 +142,7 @@
                                 <div class="text-center me-1">
                                     <div>
                                         <div style="font-size : 10px !important; color:black;">
-                                            <strong id="natrium">263.5 ppm</strong> 
+                                            <strong id="natrium">200 ppm</strong> 
                                         </div>
                                     </div>
                                     <div>
@@ -157,7 +157,7 @@
                                 <div class="text-center me-1">
                                     <div>
                                         <div style="font-size : 10px !important; color:black;">
-                                            <strong id="phosphorus">20.5 ppm</strong> 
+                                            <strong id="phosphorus">7.5 ppm</strong> 
                                         </div>
                                     </div>
                                     <div>
@@ -270,7 +270,7 @@
                                 <div class="text-center me-1">
                                     <div>
                                         <div style="font-size : 10px !important; color:black;">
-                                            <strong id="phosphorus">6.5 ppm</strong> 
+                                            <strong id="phosphorus">8.5 ppm</strong> 
                                         </div>
                                     </div>
                                     <div>
@@ -285,7 +285,7 @@
                                 <div class="text-center me-1">
                                     <div>
                                         <div style="font-size : 10px !important; color:black;">
-                                            <strong id="potassium">120.5 ppm</strong> 
+                                            <strong id="potassium">210.5 ppm</strong> 
                                         </div>
                                     </div>
                                     <div>
@@ -347,11 +347,54 @@
         attribution: '© Google Maps'
       }).addTo(map);
 
+    var myCustomColour = '#dc3545';
+    const markerHtmlStyles = `
+    background-color: ${myCustomColour};
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
+    right: 0.7rem;
+    bottom: 0.2rem;
+    position: relative;
+    border-radius: 3rem 3rem 0;
+    transform: rotate(45deg);
+    border: 1px solid #FFFFFF`
+
+    const icon = L.divIcon({
+    className: "my-custom-pin",
+    iconAnchor: [0, 24],
+    labelAnchor: [-6, 0],
+    popupAnchor: [0, -36],
+    html: `<span style="${markerHtmlStyles}" />`
+    })
+
     // define rectangle geographical bounds
     var bounds = [[-6.6908840, 107.6722790], [-6.6909050, 107.6723020], [-6.6908310, 107.6723090], [-6.6908660, 107.6723780]];
 
-    L.marker({lat : -6.6908840 , lon : 107.6722790}).addTo(map);
-    L.marker({lat : -6.6909050 , lon : 107.6723020}).addTo(map);
+    L.marker({lat : -6.6908840 , lon : 107.6722790}, {icon : icon}).addTo(map);
+
+    var myCustomColour2 = '#1cbb8c';
+    const markerHtmlStyles2 = `
+    background-color: ${myCustomColour2};
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
+    right: 0.7rem;
+    bottom: 0.2rem;
+    position: relative;
+    border-radius: 3rem 3rem 0;
+    transform: rotate(45deg);
+    border: 1px solid #FFFFFF`
+
+    const icon2 = L.divIcon({
+    className: "my-custom-pin",
+    iconAnchor: [0, 24],
+    labelAnchor: [-6, 0],
+    popupAnchor: [0, -36],
+    html: `<span style="${markerHtmlStyles2}" />`
+    })
+    
+    L.marker({lat : -6.6909050 , lon : 107.6723020}, {icon : icon2}).addTo(map);
     // create an orange rectangle
     L.rectangle(bounds, {color: "red", weight: 1}).addTo(map);
 

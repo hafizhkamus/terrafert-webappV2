@@ -36,10 +36,9 @@ class Welcome extends BaseController
 				if ($md5 == $password) {
 					session()->set([
 						'username'		=> $user['username'],
-						'role'			=> $user['role'],
 						'isLoggedIn' 	=> TRUE
 					]);
-					return redirect()->to(base_url('home'));
+					return redirect()->to(base_url('map'));
 				} else {
 					session()->setFlashdata('notif_error', 'username or password is wrong!');
 					return redirect()->to(base_url('login'));

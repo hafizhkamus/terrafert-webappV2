@@ -9,7 +9,7 @@ class AlatModel extends Model
 	public function getAlat()
 	{
         return $this->db->query("select id, no_device, device_name, 
-        longitude, latitude, created_at, first_address
+        longitude, latitude
         from devices order by id")->getResultArray();
 	}
 
@@ -42,7 +42,7 @@ class AlatModel extends Model
 	{
 
         if ($startDate == "" || $endDate == "") {
-            return $this->db->query("SELECT YEAR(trx_time) AS trx_year, WEEK(trx_time) AS trx_week,
+            return $this->db->query("SELECT DATE(trx_time) AS trx_time,
 				AVG(ph) AS avg_ph,
 				AVG(N) AS avg_N,
 				AVG(P) AS avg_P,
@@ -53,11 +53,11 @@ class AlatModel extends Model
 			WHERE 
 				id_device = ?
 			GROUP BY 
-				YEAR(trx_time), WEEK(trx_time)
+				DATE(trx_time) 
 			ORDER BY 
-				trx_year ASC, trx_week ASC", $idAlat)->getResultArray();
+				DATE(trx_time) ASC", $idAlat)->getResultArray();
         } else {
-            return $this->db->query("SELECT YEAR(trx_time) AS trx_year, WEEK(trx_time) AS trx_week,
+            return $this->db->query("SELECT DATE(trx_time) AS trx_time,
 				AVG(ph) AS avg_ph,
 				AVG(N) AS avg_N,
 				AVG(P) AS avg_P,
@@ -70,9 +70,9 @@ class AlatModel extends Model
 				AND trx_time >= ? 
 				AND trx_time <= ?
 			GROUP BY 
-				YEAR(trx_time), WEEK(trx_time)
+				DATE(trx_time) 
 			ORDER BY 
-				trx_year ASC, trx_week ASC", array($idAlat, $startDate, $endDate))->getResultArray();
+				DATE(trx_time) ASC", array($idAlat, $startDate, $endDate))->getResultArray();
         }
 	}
 
@@ -81,10 +81,8 @@ class AlatModel extends Model
 		return $this->db->table('devices')->insert([
 			'no_device'		=> $alat['noDevice'],
 			'device_name' 	=> $alat['deviceName'],
-			'first_address' => $alat['location'],
 			'latitude' 		=> $alat['latitude'],
-			'longitude' 	=> $alat['longitude'],
-			'created_at'    => date('Y-m-d h:i:s')
+			'longitude' 	=> $alat['longitude']
 		]);
 	}
 	public function updateAlat($alat)
@@ -97,7 +95,6 @@ class AlatModel extends Model
 		// }
 		return $this->db->table('devices')->update([
 			'device_name'		=> $alat['deviceName'],
-			'first_address' 	=> $alat['location'],
 			'latitude'			=> $alat['latitude'],
 			'longitude'			=> $alat['longitude'],
 		], ['id' => $alat['deviceId']]);

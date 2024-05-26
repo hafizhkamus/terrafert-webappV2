@@ -23,8 +23,7 @@
                             <thead>
                                 <tr>
                                     <th class="w-10">No</th>
-                                    <th class="d-none d-xl-table-cell w-40">Nama</th>
-                                    <th class="w-30">Tanggal Input</th>
+                                    <th class="d-none d-xl-table-cell w-70">Nama</th>
                                     <th class="w-20"></th>
                                 </tr>
                             </thead>
@@ -33,9 +32,8 @@
                                     <tr>
                                         <td><?= $alat['no_device']; ?></td>
                                         <td class="d-none d-xl-table-cell w-40"><?= $alat['device_name']; ?></td>
-                                        <td><?= $alat['created_at']; ?></td>
                                         <td>
-                                            <button class="btn btn-info btn-sm btnEdit" data-bs-toggle="modal" data-bs-target="#formUserModal" data-id="<?= $alat['id']; ?>">Liat Histori</button>
+                                            <button class="btn btn-info btn-sm btnEdit" data-bs-toggle="modal" data-bs-target="#formUserModal" data-id="<?= $alat['id']; ?>">Lihat Histori</button>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -45,43 +43,6 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="col-12 col-lg-4 col-xxl-4 d-flex">
-            <div class="card flex-fill">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">User Roles <button class="btn btn-primary btn-sm float-end btnAddRole" data-bs-toggle="modal" data-bs-target="#formRoleModal">Create New Role</button></h5>
-                </div>
-                <div class="card-body d-flex">
-                    <div class="table-responsive">
-                        <table class="table table-hover my-0">
-                            <thead>
-                                <tr>
-                                    <th>Role</th>
-                                    <th colspan="2"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($UserRole as $userRole) : ?>
-                                    <tr>
-                                        <td><?= $userRole['role_name']; ?></td>
-                                        <td><a href="<?= base_url('users/userRoleAccess?role=' . $userRole['id']); ?>"> <span class="badge bg-primary">Access Menu</span></a></td>
-                                        <td>
-                                            <button class="btn btn-info btn-sm btnEditRole" data-bs-toggle="modal" data-bs-target="#formRoleModal" data-id="<?= $userRole['id']; ?>" data-role="<?= $userRole['role_name']; ?>">Update</button>
-                                            <form action="<?= base_url('users/deleteRole/' . $userRole['id']); ?>" method="post" class="d-inline">
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" class="btn btn-outline-danger btn-sm">
-                                                    Delete
-                                                </button>
-                                            </form>
-
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>-->
     </div> 
 </div> 
 
@@ -133,30 +94,6 @@
     </div>
 </div>
 
-<!-- <div class="modal fade" id="formRoleModal" tabindex="-1" aria-labelledby="formUserModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="formUserModalLabel">Create New User</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="<?= base_url('users/createRole'); ?> " method="post">
-                <div class="modal-body">
-                    <input type="hidden" name="roleID" id="roleID">
-                    <div class="mb-3">
-                        <label for="inputRoleName" class="form-label">Add Role</label>
-                        <input type="text" class="form-control" id="inputRoleName" name="inputRoleName" placeholder="Role Name">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Save Role</button>
-                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                </div>
-            </form>
-
-        </div>
-    </div>
-</div> -->
 <script>
     $(document).ready(function() {
         $(".btnAdd").click(function() {

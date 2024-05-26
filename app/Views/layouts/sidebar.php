@@ -7,43 +7,26 @@
             </div>
         </a>
         <ul class="sidebar-nav">
-            <?php foreach ($MenuCategory as $mCategory) : ?>
-                <!-- <li class="sidebar-header">
-                    <?= $mCategory['menu_category']; ?>
-                </li> -->
-                <?php
-                $Menu = getMenu($mCategory['menuCategoryID'], $user['role']);
-                foreach ($Menu as $menu) :
-                    if ($menu['parent'] == 0) :
-                ?>
-                        <li class="sidebar-item <?= ($segment == $menu['url']) ? 'active' : ''; ?>">
-                            <a class="sidebar-link px-3 py-3" href="<?= base_url($menu['url']); ?> ">
-                                <i class="align-middle" data-feather="<?= $menu['icon']; ?>"></i> <span class="align-middle px-2"><?= $menu['title']; ?></span>
-                            </a>
-                        </li>
-                    <?php
-                    else :
-                        $SubMenu =  getSubMenu($menu['menu_id'], $user['role']);
-                    ?>
-                        <li class="sidebar-item <?= ($segment == $menu['url']) ? 'active' : ''; ?>">
-                            <a data-bs-target="#<?= $menu['url'] ?>" data-bs-toggle="collapse" class="sidebar-link collapsed" aria-expanded="<?= ($segment == $menu['url']) ? 'true' : 'false'; ?>">
-                                <i class="align-middle" data-feather="<?= $menu['icon']; ?>"></i> <span class="align-middle"><?= $menu['title']; ?></span>
-                            </a>
-                            <ul id="<?= $menu['url'] ?>" class="sidebar-dropdown list-unstyled collapse <?= ($segment == $menu['url']) ? ' show' : ''; ?> " data-bs-parent="#sidebar">
-                                <?php foreach ($SubMenu as $subMenu) : ?>
-                                    <li class="sidebar-item <?= ($subsegment == $subMenu['url']) ? 'active' : ''; ?>">
-                                        <a class="sidebar-link" href="<?= base_url($menu['url'] . '/' . $subMenu['url']); ?>">
-                                            <?= $subMenu['title']; ?>
-                                        </a>
-                                    </li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </li>
-                <?php
-                    endif;
-                endforeach;
-                ?>
-            <?php endforeach; ?>
+            <li class="sidebar-item <?= ($segment == 'map') ? 'active' : ''; ?>">
+                <a class="sidebar-link px-3 py-3" href="<?= base_url('map'); ?> ">
+                    <i class="align-middle" data-feather="map-pin"></i> <span class="align-middle px-2">Peta</span>
+                </a>
+            </li>
+            <li class="sidebar-item <?= ($segment == 'alat') ? 'active' : ''; ?>">
+                <a class="sidebar-link px-3 py-3" href="<?= base_url('alat'); ?> ">
+                    <i class="align-middle" data-feather="pen-tool"></i> <span class="align-middle px-2">Alat</span>
+                </a>
+            </li>
+            <li class="sidebar-item <?= ($segment == 'histori') ? 'active' : ''; ?>">
+                <a class="sidebar-link px-3 py-3" href="<?= base_url('histori'); ?> ">
+                    <i class="align-middle" data-feather="clock"></i> <span class="align-middle px-2">Histori</span>
+                </a>
+            </li>   
+            <li class="sidebar-item <?= ($segment == 'grafik') ? 'active' : ''; ?>">
+                <a class="sidebar-link px-3 py-3" href="<?= base_url('grafik'); ?> ">
+                    <i class="align-middle" data-feather="bar-chart"></i> <span class="align-middle px-2">Grafik</span>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>

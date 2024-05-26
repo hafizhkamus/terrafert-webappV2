@@ -55,8 +55,7 @@ class BaseController extends Controller
         $this->data = [
             'segment' => $segment,
             'subsegment' => $subsegment,
-            'user' => $user,
-            'MenuCategory' => $this->userModel->getAccessMenuCategory(session()->get('role'))
+            'user' => $user
         ];
     }
 }

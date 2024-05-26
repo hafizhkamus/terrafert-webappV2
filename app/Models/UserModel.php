@@ -9,10 +9,9 @@ class UserModel extends Model
 	public function getUser($username = false, $userID = false)
 	{
 		if ($username) {
-			return $this->db->query('SELECT users.*, user_role.role_name
-			FROM users
-			JOIN user_role ON users.role = user_role.id
-			WHERE users.username = ?', $username)->getRowArray();
+			return $this->db->query('SELECT *
+			FROM user_admins
+			WHERE username = ?', $username)->getRowArray();
 		}
 	}
 

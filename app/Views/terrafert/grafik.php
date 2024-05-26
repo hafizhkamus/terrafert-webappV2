@@ -35,7 +35,6 @@
                                     <tr>
                                         <td><?= $alat['no_device']; ?></td>
                                         <td class="d-none d-xl-table-cell w-40"><?= $alat['device_name']; ?></td>
-                                        <!--  <td><?= $alat['created_at']; ?></td> -->
                                         <td>
                                             <button class="btn btn-secondary btn-lg me-2 kelembaban" data-bs-toggle="modal" data-bs-target="#formUserModal" id="kelembaban" data-id="<?= $alat['id']; ?>" data-category="Kelembaban"><img src="<?= base_url('assets/img/water.png') ?>" style="width: 25px;"></button>
                                             <button class="btn btn-secondary btn-lg me-2 ph" data-bs-toggle="modal" data-bs-target="#formUserModal" id="ph" data-id="<?= $alat['id']; ?>" data-category="pH"><img src="<?= base_url('assets/img/pH.png') ?>" style="width: 25px;"></button>
@@ -49,43 +48,6 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="col-12 col-lg-4 col-xxl-4 d-flex">
-            <div class="card flex-fill">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">User Roles <button class="btn btn-primary btn-lg float-end btnAddRole" data-bs-toggle="modal" data-bs-target="#formRoleModal">Create New Role</button></h5>
-                </div>
-                <div class="card-body d-flex">
-                    <div class="table-responsive">
-                        <table class="table table-hover my-0">
-                            <thead>
-                                <tr>
-                                    <th>Role</th>
-                                    <th colspan="2"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($UserRole as $userRole) : ?>
-                                    <tr>
-                                        <td><?= $userRole['role_name']; ?></td>
-                                        <td><a href="<?= base_url('users/userRoleAccess?role=' . $userRole['id']); ?>"> <span class="badge bg-primary">Access Menu</span></a></td>
-                                        <td>
-                                            <button class="btn btn-info btn-sm btnEditRole" data-bs-toggle="modal" data-bs-target="#formRoleModal" data-id="<?= $userRole['id']; ?>" data-role="<?= $userRole['role_name']; ?>">Update</button>
-                                            <form action="<?= base_url('users/deleteRole/' . $userRole['id']); ?>" method="post" class="d-inline">
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" class="btn btn-outline-danger btn-sm">
-                                                    Delete
-                                                </button>
-                                            </form>
-
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>-->
     </div> 
 </div>
 
@@ -176,7 +138,7 @@
                     var value = [];
                     $.each(data, function(index, alat) {
                         console.log(alat);
-                        week.push('Week ' + alat.trx_week.toString() + '(' + alat.trx_year + ')');
+                        week.push(alat.trx_time.toString());
                         value.push(parseInt(alat.avg_humidity));
                     });
 
@@ -231,7 +193,7 @@
                     var value = [];
                     $.each(data, function(index, alat) {
                         console.log(alat);
-                        week.push('Week ' + alat.trx_week.toString() + '(' + alat.trx_year + ')');
+                        week.push(alat.trx_time.toString());
                         value.push(parseInt(alat.avg_ph));
                     });
 
@@ -288,7 +250,7 @@
                     var avgK = [];
                     $.each(data, function(index, alat) {
                         console.log(alat);
-                        week.push('Week ' + alat.trx_week.toString() + '(' + alat.trx_year + ')');
+                        week.push(alat.trx_time.toString());
                         avgN.push(parseInt(alat.avg_N));
                         avgP.push(parseInt(alat.avg_P));
                         avgK.push(parseInt(alat.avg_K));

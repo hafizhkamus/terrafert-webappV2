@@ -11,10 +11,10 @@
                 </a>
 
                 <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                    <img src="<?= base_url('assets/img/user-1.png') ?>" class="avatar img-fluid rounded me-1" alt="<?= $user['fullname']; ?>" /> <span class="text-dark"><?= $user['fullname']; ?></span>
+                    <img src="<?= base_url('assets/img/user-1.png') ?>" class="avatar img-fluid rounded me-1" alt="<?= $user['username']; ?>" /> <span class="text-dark"><?= $user['username']; ?></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="<?= base_url('Welcome/logout'); ?> ">Log out</a>
+                    <a class="dropdown-item" href="<?= base_url('Welcome/logout'); ?> ">Keluar</a>
                 </div>
             </li>
         </ul>

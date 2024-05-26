@@ -30,7 +30,6 @@ class Histori extends BaseController
 		$data = array_merge($this->data, [
 			'title' 	=> 'Users Page',
 			'Alat'		=> $this->alatModel->getAlat(),
-			'UserRole'	=> $this->userModel->getUserRole(),
             'Month'     => $month
 		]);
 		return view('terrafert/histori', $data);
