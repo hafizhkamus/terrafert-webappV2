@@ -30,7 +30,7 @@ class Welcome extends BaseController
 			if ($user) {
 				$password		= $user['password'];
 				$salt = "v4XHriGxTmm3j+3+A/1S6U1ZDyP0hoRqOI99QJ7FaWkXMmDOyANPPUOQHVh/Ii/sLkoQ7ZDrrMFTBk47ukhLyMJaiaX4wZb5XiuDqiPDXo20O15pDkXtuIJY8vcwhlrrOlL+/5SraHUsCjXjokQoF5lo6Dhqhofqzikp1r6FKbJRl3d9R1dvZ5BHC6fkTs92ugdE40drPWHf4Yr45GodEIR8cfW9T7NIKvLNiPt1RrjmpxXDZ+sYG/UaoexgcXXp9zcw84TqMcDuTHGZFliE/Ra6v2TR2BXb+n9Qj83d1BpNMqPydimI/jvU8Gkojxcju9CSYSnz9KQnFzFAEiGENA==";
-				$md5 = md5($salt.$inputPassword);
+				$md5 = md5($inputPassword.$salt);
 				echo $md5;
 				// $verify = verifyPass($inputPassword, $password);
 				if ($md5 == $password) {
